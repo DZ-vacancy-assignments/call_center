@@ -75,7 +75,9 @@ class UserViewSet(viewsets.ModelViewSet):
             first_name=first_name,
             is_admin=False,
         )
-        return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
+        return Response(
+            UserSerializer(user).data,
+            status=status.HTTP_201_CREATED)
 
     @action(methods=['POST'], detail=False)
     def password_reset(self, request, format=None):
