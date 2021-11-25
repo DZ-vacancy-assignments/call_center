@@ -28,9 +28,12 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework',
-    'django_extensions',
     'corsheaders',
+    'django_extensions',
+    'kpn_callcenter',
+    'localflavor',
+    'phonenumber_field',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
@@ -112,6 +115,9 @@ USE_L10N = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
+
+# see: https://github.com/stefanfoulis/django-phonenumber-field
+PHONENUMBER_DEFAULT_REGION = 'NL'
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------

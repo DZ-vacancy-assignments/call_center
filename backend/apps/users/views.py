@@ -1,7 +1,7 @@
 import requests
 from uuid import uuid4
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -56,6 +56,11 @@ class UserViewSet(viewsets.ModelViewSet):
             login(request, user)
             return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    @action(methods=['GET'], detail=False)
+    def logout(self, request):
+        logout(request)
+        return Response(status=status.HTTP_200_OK)
 
     @action(methods=['POST'], detail=False)
     def register(self, request):
