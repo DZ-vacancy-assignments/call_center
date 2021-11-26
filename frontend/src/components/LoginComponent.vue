@@ -57,6 +57,7 @@ export default {
         this.$router.push('/home/')
       }
     })
+    return
   }
 };
 </script>

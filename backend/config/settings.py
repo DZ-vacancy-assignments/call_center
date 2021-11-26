@@ -30,7 +30,6 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'corsheaders',
     'django_extensions',
-    'kpn_callcenter',
     'localflavor',
     'phonenumber_field',
     'rest_framework',
@@ -38,6 +37,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'apps.users',
+    'kpn_callcenter',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
