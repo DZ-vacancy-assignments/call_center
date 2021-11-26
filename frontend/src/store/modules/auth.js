@@ -50,7 +50,7 @@ const actions = {
       .catch(e => { console.log(e) })
   },
   getProfile (context) {
-    return axios.get('/api/users/profile')
+    return axios.get('/api/users/profile/')
       .then(response => {
         context.commit('login')
         context.commit('setProfile', response.data)
@@ -59,10 +59,21 @@ const actions = {
         context.commit('logout')
         console.log(e)
       })
+  },
+  logout (context) {
+    return axios.get('/api/users/logout/')
+      .then(response => {
+          context.commit('logout')
+          context.commit('setProfile', {})
+      })
+      .catch(e => {
+        console.log(e)
+      })
   }
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,

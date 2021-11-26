@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import ExampleComponent from '@/components/ExampleComponent.vue'
+import LoginComponent from '@/components/LoginComponent.vue'
+import HomeComponent from '@/components/HomeComponent.vue'
 
 const routes = [
-  { path: '*', component: ExampleComponent }
+  { path: '/', component: LoginComponent },
+  { path: '/home', component: HomeComponent }
 ]
 
 Vue.use(VueRouter)
