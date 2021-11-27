@@ -9,25 +9,70 @@
         <div>Login state: {{ $store.state.auth.loggedIn }}.</div>
       </div>
       <div class="work-area">
-        <div class="search-v1">
+        <br/><br/>
+        <span>
+
+            <v-select
+              @input="setActiveSearch"
+              :options="$store.state.kcc.searchOptionsCustomers"
+              :value="activeSearch"
+              :clearable="false"
+            ></v-select>
+
+        </span>
+        <span
+          v-if="activeSearch.code=='zipCodeHouseNumber'"
+          class="search-address"
+        >
           <span>
             <input
-              v-model="ZipCode"
-              @keydown.enter="search-v1"
-              placeholder="zip code"
+              v-model="searchParameters.zipCode"
+              @keydown.enter="searchAddress"
+              placeholder="zip code (XXXX<space>XX)"
             />
           </span>
           <span>
             <input
-              v-model="HouseNumber"
-              @keydown.enter="search-v1"
+              v-model="searchParameters.houseNumber"
+              @keydown.enter="searchAddress"
               placeholder="house number"
             />
           </span>
           <div>
-            <button @click="searchV1();">search</button>
+            <button @click="searchAddress();">search</button>
           </div>
-        </div>
+        </span>
+        <span
+          v-else-if="activeSearch.code=='email'"
+          class="search-email"
+        >
+          <span>
+            <input
+              v-model="searchParameters.email"
+              @keydown.enter="searchEmail"
+              placeholder="email"
+            />
+          </span>
+          <div>
+            <button @click="searchEmail();">search</button>
+          </div>
+        </span>
+        <span
+          v-else-if="activeSearch.code=='telephoneNumber'"
+          class="search-telephone"
+        >
+          <span>
+            <input
+              v-model="searchParameters.telephoneNumber"
+              @keydown.enter="searchTelephone"
+              placeholder="telephone number"
+            />
+          </span>
+          <div>
+            <button @click="searchTelephone();">search</button>
+          </div>
+        </span>
+
         <div
           class="customer-results"
           v-if="$store.state.kcc.customerResults"
@@ -36,14 +81,15 @@
         >
           <div>--------------------------------</div>
           <div>id: {{ customer.id }}</div>
-          <div>date_birth: {{ customer.date_birth }}</div>
-          <div>email: {{ customer.email }}</div>
           <div>first_name: {{ customer.first_name }}</div>
           <div>last_name: {{ customer.last_name }}</div>
-          <div>gender: {{ customer.gender }}</div>
-          <div>notes: {{ customer.notes }}</div>
-          <div>telephone: {{ customer.telephone }}</div>
           <div>zip_code: {{ customer.zip_code }}</div>
+          <div>house_number: {{ customer.house_number }}</div>
+          <div>email: {{ customer.email }}</div>
+          <div>telephone: {{ customer.telephone }}</div>
+          <div>notes: {{ customer.notes }}</div>
+          <div>date_birth: {{ customer.date_birth }}</div>
+          <div>gender: {{ customer.gender }}</div>
           <div>--------------------------------</div>
         </div>
       </div>
@@ -52,14 +98,25 @@
 </template>
 
 <script>
+
+import VueSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
+
 export default {
   name: 'HomeComponent',
+  components: {
+    'v-select': VueSelect
+  },
   data() {
     return {
-      // Customers: {},
-      ZipCode: "",
-      HouseNumber: "",
-    };
+      activeSearch: '',
+      searchParameters: {
+        zipCode: '',
+        houseNumber: '',
+        email: '',
+        telephoneNumber: '',
+      }
+    }
   },
   methods: {
     logout: function() {
@@ -71,8 +128,40 @@ export default {
       })
       return
     },
-    searchV1: function() {
-      this.$store.dispatch('kcc/searchCustomers')
+    setActiveSearch: function(searchOption) {
+      this.activeSearch = searchOption
+      return
+    },
+    searchAddress: function() {
+      this.$store.dispatch(
+        'kcc/searchCustomers',
+        {
+          'search_option': this.activeSearch.code,
+          'zip_code': this.searchParameters.zipCode,
+          'house_number': this.searchParameters.houseNumber
+        }
+      )
+      return
+    },
+    searchEmail: function() {
+      this.$store.dispatch(
+        'kcc/searchCustomers',
+        {
+          'search_option': this.activeSearch.code,
+          'email': this.searchParameters.email
+        }
+      )
+      return
+    },
+    searchTelephone: function() {
+      this.$store.dispatch(
+        'kcc/searchCustomers',
+        {
+          'search_option': this.activeSearch.code,
+          'telephone': this.searchParameters.telephoneNumber
+        }
+      )
+      return
     }
   },
   created: function() {
@@ -82,6 +171,9 @@ export default {
         this.$router.push('/')
       }
     })
+    if (this.activeSearch === '') {
+        this.activeSearch = this.$store.state.kcc.searchOptionsCustomers[0]
+    }
     return
   }
 };
@@ -92,4 +184,3 @@ export default {
     text-align: center;
   }
 </style>
-
