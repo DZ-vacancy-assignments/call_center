@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
@@ -6,6 +8,9 @@ from rest_framework.viewsets import GenericViewSet
 
 from .models import Customer
 from .serializers import CustomerSerializer
+
+
+logger = logging.getLogger(__name__)
 
 
 class CustomerViewSet(GenericViewSet):
@@ -23,6 +28,8 @@ class CustomerViewSet(GenericViewSet):
         customer_ids_found = []
         for result in queryset:
             customer_ids_found.append(result.id)
+
+        logger.info("Customer ids found: %s.", customer_ids_found)
 
         page = self.paginate_queryset(queryset)
         if page is not None:
@@ -55,6 +62,16 @@ class CustomerViewSet(GenericViewSet):
             }
         else:
             warning_invalid_search_option = True
+            logger.warning(
+                "Invalid search request: %s.",
+                search_option
+            )
+        logger.info(
+            "User id %s searched for %s with %s.",
+            request.user.id,
+            search_option,
+            search_filter,
+        )
 
         warning_blank_search = False
         for df in search_filter.values():
@@ -62,6 +79,7 @@ class CustomerViewSet(GenericViewSet):
                 break
         else:
             warning_blank_search = True
+            logger.warning("Blank searches not allowed.")
 
         if warning_blank_search or warning_invalid_search_option:
             return None
