@@ -28,7 +28,6 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'corsheaders',
     'django_extensions',
     'localflavor',
     'phonenumber_field',
@@ -48,7 +47,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -65,7 +63,6 @@ SECRET_KEY = env.str('SECRET_KEY')
 # DOMAINS
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 DOMAIN = env.str('DOMAIN')
-CORS_ORIGIN_ALLOW_ALL = True
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
