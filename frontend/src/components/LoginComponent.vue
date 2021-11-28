@@ -1,27 +1,40 @@
 <template>
-  <div class="container">
-    <h1>WELCOME TO KPN CALL CENTER</h1>
-    <p align="center">
-      <img src="https://i.imgur.com/SA8cjs8.png">
-    </p>
-    <div>I'm in the LoginComponent.vue.</div>
-    <div>
-      <input
-        v-model="email"
-        @keydown.enter="login()"
-        placeholder="email"
-      />
-    </div>
-    <div>
-      <input
-        v-model="password"
-        @keydown.enter="login()"
-        placeholder="password"
-      />
-    </div>
-    <div>
-      <button @click="login();">login</button>
-      <div>Login state: {{ $store.state.auth.loggedIn }}.</div>
+  <div class="center">
+    <h1 class="page-title">&nbsp;WELCOME TO <span class="brand-name">KPN</span> CALL CENTER&nbsp</h1>
+    <div class="login-form">
+      <article
+        v-if="warningMessage"
+        class="message is-warning"
+      >
+        <div class="message-body">{{ warningMessage }}</div>
+      </article>
+      <div class="field-email">
+        <label>Email</label>
+        <input
+          class="input is-normal"
+          type="email"
+          v-model="email"
+          @keydown.enter="login()"
+          placeholder="email"
+        />
+      </div>
+      <div class="field-password">
+        <label>Password</label>
+        <input
+          class="input is-normal"
+          type="password"
+          v-model="password"
+          @keydown.enter="login()"
+          placeholder="password"
+        />
+      </div>
+      <div>
+        <button
+          class="button"
+          @click="login();"
+        >Login
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +46,7 @@ export default {
     return {
       email: 'firstcreateduser@user.com',
       password: 'testOK99%1',
+      warningMessage: '',
     };
   },
   methods: {
@@ -40,12 +54,16 @@ export default {
       let payload = {'email': this.email, 'password': this.password}
       this.$store.dispatch('auth/postLogin', payload)
       .then(() => {
-        this.$store.dispatch('auth/getProfile')
-        .then(() => {
-          if (this.$store.state.auth.loggedIn) {
-            this.$router.push('/home/')
-          }
-        })
+        if (this.$store.state.auth.authError) {
+          this.warningMessage = "Login was not successful."
+        } else {
+          this.$store.dispatch('auth/getProfile')
+          .then(() => {
+            if (this.$store.state.auth.loggedIn) {
+              this.$router.push('/search_customers/')
+            }
+          })
+        }
       })
       return
     }
@@ -54,7 +72,7 @@ export default {
     this.$store.dispatch('auth/getProfile')
     .then(() => {
       if (this.$store.state.auth.loggedIn) {
-        this.$router.push('/home/')
+        this.$router.push('/search_customers/')
       }
     })
     return
@@ -63,7 +81,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h1 {
-    text-align: center;
-  }
+@import '../assets/css/login.css';
 </style>

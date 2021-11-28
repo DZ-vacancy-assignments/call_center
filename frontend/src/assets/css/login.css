@@ -1,0 +1,27 @@
+.page-title {
+  margin-bottom: 2em;
+  text-decoration: underline black;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-form {
+  width: 20em;
+  margin: auto;
+}
+
+.field-password {
+  margin-top: 0.5em;
+}
+
+.button {
+  margin-top: 1em;
+}

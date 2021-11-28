@@ -1,0 +1,9 @@
+.nav-title {
+  border: 0.1em solid green;
+  padding: 0.7em;
+  font-weight: bold;
+}
+
+.brand-name {
+  color: green;
+}

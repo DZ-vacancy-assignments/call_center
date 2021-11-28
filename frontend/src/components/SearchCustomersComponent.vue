@@ -1,24 +1,15 @@
 <template>
   <div>
     <div class="container">
-      <h1>Welcome {{ $store.state.auth.profile.full_name }}</h1>
-      <h1>Welcome {{ $store.state.auth.profile.email }}</h1>
-      <h2>This is the home screen.</h2>
-      <div>I'm in the HomeComponent.vue.</div>
-        <button @click="logout();">logout</button>
-        <div>Login state: {{ $store.state.auth.loggedIn }}.</div>
-      </div>
       <div class="work-area">
         <br/><br/>
         <span>
-
-            <v-select
-              @input="setActiveSearch"
-              :options="$store.state.kcc.searchOptionsCustomers"
-              :value="activeSearch"
-              :clearable="false"
-            ></v-select>
-
+          <v-select
+            @input="setActiveSearch"
+            :options="$store.state.kcc.searchOptionsCustomers"
+            :value="activeSearch"
+            :clearable="false"
+          ></v-select>
         </span>
         <span
           v-if="activeSearch.code=='zipCodeHouseNumber'"
@@ -98,12 +89,10 @@
 </template>
 
 <script>
-
 import VueSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
-
 export default {
-  name: 'HomeComponent',
+  name: 'SearchCustomersComponent',
   components: {
     'v-select': VueSelect
   },
@@ -119,15 +108,6 @@ export default {
     }
   },
   methods: {
-    logout: function() {
-      this.$store.dispatch('auth/logout')
-      .then(() => {
-        if (!this.$store.state.auth.loggedIn) {
-          this.$router.push('/')
-        }
-      })
-      return
-    },
     setActiveSearch: function(searchOption) {
       this.activeSearch = searchOption
       return
@@ -180,7 +160,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h1 {
-    text-align: center;
-  }
 </style>

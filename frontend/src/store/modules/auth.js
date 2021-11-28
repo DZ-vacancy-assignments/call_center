@@ -30,10 +30,11 @@ const mutations = {
 const actions = {
   postLogin (context, payload) {
     return axios.post('/api/users/login/', payload)
-      .then(response => {})
+      .then(response => {
+        context.commit('setAuthError', false)
+      })
       .catch(e => {
         context.commit('setAuthError', true)
-        console.log(e)
       })
   },
   postRegister (context, payload) {
