@@ -13,7 +13,7 @@ class Customer(TimeStamps):
     FEMALE = 'female'
     MALE = 'male'
     OTHER = 'other'
-    UNKNOWN = 'Unknown'
+    UNKNOWN = 'unknown'
 
     GENDER_CHOICES = (
         (FEMALE, 'Female'),

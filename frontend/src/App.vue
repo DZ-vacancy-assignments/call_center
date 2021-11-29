@@ -44,6 +44,14 @@ export default {
       })
       return
     }
+  },
+  created: function() {
+    this.$store.dispatch('auth/getProfile')
+    .then(() => {
+      if (!this.$store.state.auth.loggedIn) {
+        this.$router.push('/')
+      }
+    })
   }
 }
 </script>

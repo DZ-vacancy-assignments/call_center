@@ -65,23 +65,22 @@
         </span>
 
         <div
-          class="customer-results"
+          class="card"
           v-if="$store.state.kcc.customerResults"
           v-for="customer in $store.state.kcc.customerResults"
           :key="customer.id"
         >
-          <div>--------------------------------</div>
-          <div>id: {{ customer.id }}</div>
-          <div>first_name: {{ customer.first_name }}</div>
-          <div>last_name: {{ customer.last_name }}</div>
-          <div>zip_code: {{ customer.zip_code }}</div>
-          <div>house_number: {{ customer.house_number }}</div>
-          <div>email: {{ customer.email }}</div>
-          <div>telephone: {{ customer.telephone }}</div>
-          <div>notes: {{ customer.notes }}</div>
-          <div>date_birth: {{ customer.date_birth }}</div>
-          <div>gender: {{ customer.gender }}</div>
-          <div>--------------------------------</div>
+          <button class="card-content" @click="getCustomer(customer.id)">
+            <div>id: {{ customer.id }}
+              <span>&nbsp;|&nbsp;last_name: {{ customer.last_name }}</span>
+              <span>&nbsp;|&nbsp;zip_code: {{ customer.zip_code }}</span>
+              <span>&nbsp;|&nbsp;house_number: {{ customer.house_number }}</span>
+            </div>
+            <div>email: {{ customer.email }}
+              <span>&nbsp;|&nbsp;telephone: {{ customer.telephone }}</span>
+              <span>&nbsp;|&nbsp;date_birth: {{ customer.date_birth }}</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -142,15 +141,15 @@ export default {
         }
       )
       return
+    },
+    getCustomer: function(id) {
+      this.$store.dispatch('kcc/getCustomer', id)
+      .then(() => {
+        this.$router.push('/view_customer/')
+      })
     }
   },
   created: function() {
-    this.$store.dispatch('auth/getProfile')
-    .then(() => {
-      if (!this.$store.state.auth.loggedIn) {
-        this.$router.push('/')
-      }
-    })
     if (this.activeSearch === '') {
         this.activeSearch = this.$store.state.kcc.searchOptionsCustomers[0]
     }

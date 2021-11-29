@@ -3,6 +3,7 @@ import logging
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
+from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
@@ -13,9 +14,48 @@ from .serializers import CustomerSerializer
 logger = logging.getLogger(__name__)
 
 
-class CustomerViewSet(GenericViewSet):
+class CustomerViewSet(
+        CreateModelMixin,
+        RetrieveModelMixin,
+        GenericViewSet
+):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        logger.info(
+            "User id %s requests to view customer id %s.",
+            request.user.id,
+            instance.id,
+        )
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        logger.info(
+            "User id %s called create with %s.",
+            request.user.id,
+            request.data,
+        )
+        if request.data["date_birth"] == "":
+            request.data["date_birth"] = None
+        zip_code = request.data["zip_code"]
+        zip_code = zip_code.upper()
+        if len(zip_code) == 6:
+            zip_code = zip_code[:4] + " " + zip_code[4:]
+        request.data["zip_code"] = zip_code
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        logger.info(
+            "User id %s created %s.",
+            request.user.id,
+            serializer.data,
+        )
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     @action(methods=['POST'], detail=False)
     def search(self, request):

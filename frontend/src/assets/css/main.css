@@ -7,3 +7,7 @@
 .brand-name {
   color: green;
 }
+
+.navbar-start > .navbar-item:hover {
+  background-color: #bcbcbc;
+}
