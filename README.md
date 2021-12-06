@@ -21,3 +21,21 @@ If all works well, you should be able to create an admin account with:
 For certain Django logging functionality you need to create the file:
 
 `./logs/django.log`
+
+## For development the following settings should suffice in the root .env file:
+
+```python
+DEBUG=True
+SECRET_KEY=<secret-key>
+
+DOMAIN=http://localhost:8000
+ALLOWED_HOSTS=localhost
+
+# PostgreSQL
+POSTGRES_DB=kpn_callcenter
+POSTGRES_PASSWORD=<password>
+POSTGRES_USER=postgresuser
+
+# Google Analytics
+VUE_APP_GOOGLE_ANALYTICS=UA-XXXXXXXXX-X
+```
