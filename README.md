@@ -35,7 +35,6 @@ DJANGO_SUPERUSER_PASSWORD=<password>
 DJANGO_SUPERUSER_EMAIL=admin@kpncallcenter.com
 
 # PostgreSQL
-# Will have to be created manually.
 POSTGRES_DB=kpn_callcenter
 POSTGRES_PASSWORD=<password>
 POSTGRES_USER=postgresuser
