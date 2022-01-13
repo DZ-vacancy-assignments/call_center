@@ -1,5 +1,5 @@
 """
-Django settings for kpn call center project.
+Django settings for call center project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -36,7 +36,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'apps.users',
-    'kpn_callcenter',
+    'apps.call_center',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -73,7 +73,7 @@ EMAIL_HOST = env.str('EMAIL_HOST', default='mailhog')
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = [
-    ('Dennis Zethof', 'admin@kpn_callcenter.com'),
+    ('Dennis Zethof', 'admin@call_center.com'),
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers

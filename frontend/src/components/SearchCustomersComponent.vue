@@ -6,7 +6,7 @@
         <span>
           <v-select
             @input="setActiveSearch"
-            :options="$store.state.kcc.searchOptionsCustomers"
+            :options="$store.state.cc.searchOptionsCustomers"
             :value="activeSearch"
             :clearable="false"
           ></v-select>
@@ -66,8 +66,8 @@
 
         <div
           class="card"
-          v-if="$store.state.kcc.customerResults"
-          v-for="customer in $store.state.kcc.customerResults"
+          v-if="$store.state.cc.customerResults"
+          v-for="customer in $store.state.cc.customerResults"
           :key="customer.id"
         >
           <button class="card-content" @click="getCustomer(customer.id)">
@@ -113,7 +113,7 @@ export default {
     },
     searchAddress: function() {
       this.$store.dispatch(
-        'kcc/searchCustomers',
+        'cc/searchCustomers',
         {
           'search_option': this.activeSearch.code,
           'zip_code': this.searchParameters.zipCode,
@@ -124,7 +124,7 @@ export default {
     },
     searchEmail: function() {
       this.$store.dispatch(
-        'kcc/searchCustomers',
+        'cc/searchCustomers',
         {
           'search_option': this.activeSearch.code,
           'email': this.searchParameters.email
@@ -134,7 +134,7 @@ export default {
     },
     searchTelephone: function() {
       this.$store.dispatch(
-        'kcc/searchCustomers',
+        'cc/searchCustomers',
         {
           'search_option': this.activeSearch.code,
           'telephone': this.searchParameters.telephoneNumber
@@ -143,7 +143,7 @@ export default {
       return
     },
     getCustomer: function(id) {
-      this.$store.dispatch('kcc/getCustomer', id)
+      this.$store.dispatch('cc/getCustomer', id)
       .then(() => {
         this.$router.push('/view_customer/')
       })
@@ -151,7 +151,7 @@ export default {
   },
   created: function() {
     if (this.activeSearch === '') {
-        this.activeSearch = this.$store.state.kcc.searchOptionsCustomers[0]
+        this.activeSearch = this.$store.state.cc.searchOptionsCustomers[0]
     }
     return
   }

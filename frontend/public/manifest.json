@@ -1,6 +1,6 @@
 {
-  "name": "kpn_callcenter",
-  "short_name": "kpn_callcenter",
+  "name": "call_center",
+  "short_name": "call_center",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",

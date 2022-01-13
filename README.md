@@ -1,7 +1,7 @@
-kpn call center
+call center
 ===============
 
-Minimalistic version of KPN standard call center experience.
+Minimalistic version of a standard call center experience.
 
 <a href="https://github.com/vchaptsev/cookiecutter-django-vue">
     <img src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django%20Vue-blue.svg" />
@@ -32,10 +32,10 @@ DOMAIN=http://localhost:8000
 ALLOWED_HOSTS=localhost
 
 DJANGO_SUPERUSER_PASSWORD=<password>
-DJANGO_SUPERUSER_EMAIL=admin@kpncallcenter.com
+DJANGO_SUPERUSER_EMAIL=admin@callcenter.com
 
 # PostgreSQL
-POSTGRES_DB=kpn_callcenter
+POSTGRES_DB=call_center
 POSTGRES_PASSWORD=<password>
 POSTGRES_USER=postgresuser
 

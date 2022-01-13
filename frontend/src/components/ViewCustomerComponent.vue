@@ -30,7 +30,7 @@ export default {
   },
   methods: {},
   created: function() {
-    this.customer = this.$store.state.kcc.customer
+    this.customer = this.$store.state.cc.customer
     return
   }
 };

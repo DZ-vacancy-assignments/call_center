@@ -2,97 +2,124 @@
 <div>
   <div class="box create-customer">
     <article
-      v-if="$store.state.kcc.createSuccess === false"
+      v-if="$store.state.cc.createSuccess === false"
       class="message is-warning"
     >
-      <div class="message-body">{{ $store.state.kcc.createError }}</div>
+      <div class="message-body">{{ $store.state.cc.createError }}</div>
     </article>
     <div class="field">
-      <label>first name</label>
-      <input
-        class="input is-normal"
-        type="text"
-        v-model="newCustomer.first_name"
-        placeholder="first name"
-      />
+      <label class="label">first name</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="text"
+          v-model="newCustomer.first_name"
+          placeholder="first name"
+        />
+      </div>
     </div>
     <div class="field">
-      <label>last name</label>
-      <input
-        class="input is-normal"
-        type="text"
-        v-model="newCustomer.last_name"
-        placeholder="last name"
-      />
+      <label class="label">last name</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="text"
+          v-model="newCustomer.last_name"
+          placeholder="last name"
+        />
+      </div>
     </div>
     <div class="field">
-      <label>date birth</label>
-      <input
-        class="input is-normal"
-        type="date"
-        v-model="newCustomer.date_birth"
-        placeholder="date_birth"
-      />
+      <label class="label">date birth</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="date"
+          v-model="newCustomer.date_birth"
+        />
+      </div>
     </div>
 
     <div
-      class="select is-primary"
+      class="field"
     >
-      <select
-        v-model="newCustomer.gender"
-      >
-        <option>female</option>
-        <option>male</option>
-        <option>other</option>
-        <option>unknown</option>
-      </select>
+      <label class="label">gender</label>
+      <div class="control">
+        <div class="select">
+          <select
+              v-model="newCustomer.gender"
+          >
+              <option>female</option>
+              <option>male</option>
+              <option>other</option>
+              <option>unknown</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="field">
-      <label>zip code</label>
-      <input
-        class="input is-normal"
-        type="text"
-        v-model="newCustomer.zip_code"
-        placeholder="zip code"
-      />
+      <label class="label">zip code</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="text"
+          v-model="newCustomer.zip_code"
+          placeholder="zip code"
+        />
+      </div>
     </div>
     <div class="field">
-      <label>house number</label>
-      <input
-        class="input is-normal"
-        type="text"
-        v-model="newCustomer.house_number"
-        placeholder="house number"
-      />
+      <label class="label">house number</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="text"
+          v-model="newCustomer.house_number"
+          placeholder="house number"
+        />
+      </div>
     </div>
     <div class="field">
-      <label>telephone</label>
-      <input
-        class="input is-normal"
-        type="text"
-        v-model="newCustomer.telephone"
-        placeholder="telephone"
-      />
+      <label class="label">telephone</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="text"
+          v-model="newCustomer.telephone"
+          placeholder="telephone"
+        />
+      </div>
     </div>
     <div class="field-email">
-      <label>Email</label>
-      <input
-        class="input is-normal"
-        type="email"
-        v-model="newCustomer.email"
-        placeholder="email"
-      />
+      <label class="label">Email</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="email"
+          v-model="newCustomer.email"
+          placeholder="email"
+        />
+      </div>
     </div>
     <div class="field">
-      <label>notes</label>
-      <input
-        class="input is-normal"
-        type="text"
-        v-model="newCustomer.notes"
-        placeholder="notes"
-      />
+      <label class="label">notes</label>
+      <div class="control">
+        <input
+          class="input is-normal"
+          type="text"
+          v-model="newCustomer.notes"
+          placeholder="notes"
+        />
+      </div>
     </div>
-    <button class="button" @click="createCustomer();">Create Customer</button>
+    <div class="control">
+      <button
+        class="button is-primary"
+        @click="createCustomer();"
+      >
+        Create Customer
+      </button>
+    </div>
   </div>
 </div>
 </template>
@@ -118,18 +145,18 @@ export default {
   },
   methods: {
     createCustomer: function() {
-      this.$store.dispatch('kcc/createCustomer', this.newCustomer)
+      this.$store.dispatch('cc/createCustomer', this.newCustomer)
       .then(() => {
-        if (this.$store.state.kcc.createSuccess) {
+        if (this.$store.state.cc.createSuccess) {
           this.$router.push('/view_customer/')
         }
       })
     }
   },
   created: function() {
-    this.$store.commit('kcc/setCustomer', {})
-    this.$store.commit('kcc/setCreateSuccess', null)
-    this.$store.commit('kcc/setCreateError', {})
+    this.$store.commit('cc/setCustomer', {})
+    this.$store.commit('cc/setCreateSuccess', null)
+    this.$store.commit('cc/setCreateError', {})
   }
 };
 </script>

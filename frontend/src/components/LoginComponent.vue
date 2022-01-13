@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-    <h1 class="page-title">&nbsp;WELCOME TO <span class="brand-name">KPN</span> CALL CENTER&nbsp</h1>
+    <h1 class="page-title">&nbsp;WELCOME TO <span class="brand-name">MCK</span> CALL CENTER&nbsp</h1>
     <div class="login-form">
       <article
         v-if="warningMessage"
@@ -44,7 +44,7 @@ export default {
   name: 'LoginComponent',
   data() {
     return {
-      email: 'firstcreateduser@user.com',
+      email: 'firstcreateduser@user.co',
       password: 'testOK99%1',
       warningMessage: '',
     };

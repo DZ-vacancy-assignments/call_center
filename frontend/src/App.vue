@@ -3,7 +3,7 @@
   <nav v-if="$store.state.auth.loggedIn" class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <span class="navbar-item">
-        <h1 class="nav-title"><span class="brand-name">KPN</span> CALL CENTER</h1>
+        <h1 class="nav-title"><span class="brand-name">MCK</span> CALL CENTER</h1>
       </span>
     </div>
     <div class="navbar-menu">

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class KpnCallcenterConfig(AppConfig):
+class CallCenterConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'kpn_callcenter'
+    name = 'apps.call_center'
