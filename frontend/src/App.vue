@@ -8,10 +8,18 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-start">
-        <router-link class="navbar-item" to="/search_customers">Search Customers</router-link>
-        <router-link class="navbar-item" to="/create_customer">Create Customer</router-link>
-        <router-link class="navbar-item" to="/list_products">List Products</router-link>
-        <router-link class="navbar-item" to="/create_product">Create Product</router-link>
+        <router-link class="navbar-router-link" to="/search_customers">
+          <div class="navbar-item">Search Customers</div>
+        </router-link>
+        <router-link class="navbar-router-link" to="/create_customer">
+          <div class="navbar-item">Create Customer</div>
+        </router-link>
+        <router-link class="navbar-router-link" event="" to="/list_products">
+          <div class="navbar-item disabled">List Products</div>
+        </router-link>
+        <router-link class="navbar-router-link" event="" to="/create_product">
+          <div class="navbar-item disabled">Create Product</div>
+        </router-link>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">

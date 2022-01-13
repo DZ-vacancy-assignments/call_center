@@ -1,19 +1,42 @@
 <template>
 <div>
   <div class="box customer-view">
-    <div>id: {{ customer.id }}</div>
-    <br/>
-    <div>first_name: {{ customer.first_name }}</div>
-    <div>last_name: {{ customer.last_name }}</div>
-    <div>gender: {{ customer.gender }}</div>
-    <div>date_birth: {{ customer.date_birth }}</div>
-    <br/>
-    <div>zip_code: {{ customer.zip_code }}</div>
-    <div>house_number: {{ customer.house_number }}</div>
-    <br/>
-    <div>email: {{ customer.email }}</div>
-    <div>telephone: {{ customer.telephone }}</div>
-    <br/>
+    <div class="columns">
+
+      <div class="column">
+        <div class="var-item">
+          <span class="var-key">id</span><span class="var-value">: {{ customer.id }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">first name</span><span class="var-value">: {{ customer.first_name }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">last name</span><span class="var-value">: {{ customer.last_name }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">date of birth</span><span class="var-value">: {{ customer.date_birth }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">gender</span><span class="var-value">: {{ customer.gender }}</span>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="var-item">
+          <span class="var-key">zip code</span><span class="var-value">: {{ customer.zip_code }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">house_number</span><span class="var-value">: {{ customer.house_number }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">email</span><span class="var-value">: {{ customer.email }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">telephone</span><span class="var-value">: {{ customer.telephone }}</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 </template>

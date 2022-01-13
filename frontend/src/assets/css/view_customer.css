@@ -1,4 +1,5 @@
 .customer-view {
-  width: 20em;
-  margin-left: 20em;
+  width: 90%;
+  margin: 10% auto auto auto;
+  background-color: #c8c8c8 !important;
 }
