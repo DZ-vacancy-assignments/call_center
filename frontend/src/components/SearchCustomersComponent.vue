@@ -1,88 +1,172 @@
 <template>
   <div>
     <div class="container">
-      <div class="work-area">
-        <br/><br/>
-        <span>
+    <br/><br/>
+
+      <div class="field">
+        <label class="label">search options</label>
           <v-select
+            class="c-v-select"
             @input="setActiveSearch"
             :options="$store.state.cc.searchOptionsCustomers"
             :value="activeSearch"
             :clearable="false"
           ></v-select>
-        </span>
-        <span
-          v-if="activeSearch.code=='zipCodeHouseNumber'"
-          class="search-address"
-        >
-          <span>
-            <input
-              v-model="searchParameters.zipCode"
-              @keydown.enter="searchAddress"
-              placeholder="zip code (XXXX<space>XX)"
-            />
-          </span>
-          <span>
-            <input
-              v-model="searchParameters.houseNumber"
-              @keydown.enter="searchAddress"
-              placeholder="house number"
-            />
-          </span>
-          <div>
-            <button @click="searchAddress();">search</button>
-          </div>
-        </span>
-        <span
-          v-else-if="activeSearch.code=='email'"
-          class="search-email"
-        >
-          <span>
-            <input
-              v-model="searchParameters.email"
-              @keydown.enter="searchEmail"
-              placeholder="email"
-            />
-          </span>
-          <div>
-            <button @click="searchEmail();">search</button>
-          </div>
-        </span>
-        <span
-          v-else-if="activeSearch.code=='telephoneNumber'"
-          class="search-telephone"
-        >
-          <span>
-            <input
-              v-model="searchParameters.telephoneNumber"
-              @keydown.enter="searchTelephone"
-              placeholder="telephone number"
-            />
-          </span>
-          <div>
-            <button @click="searchTelephone();">search</button>
-          </div>
-        </span>
+      </div>
 
-        <div
+      <hr>
+
+      <div
+        v-if="activeSearch.code==='zipCodeHouseNumber'"
+        class="search-area search-address"
+      >
+        <div class="columns">
+          <div class="column field">
+            <label class="label">zip code</label>
+            <div class="control">
+              <input
+                class="input is-normal"
+                v-model="searchParameters.zipCode"
+                @keydown.enter="searchAddress"
+                placeholder="XXXX<space>XX"
+              />
+            </div>
+          </div>
+          <div class="column field">
+            <label class="label">house number</label>
+            <div class="control">
+              <input
+                class="input is-normal"
+                v-model="searchParameters.houseNumber"
+                @keydown.enter="searchAddress"
+                placeholder="house number"
+              />
+            </div>
+          </div>
+          <div class="column field" style="max-width:0;"></div>
+        </div>
+
+        <div class="control submit-search">
+          <button
+            class="button is-primary"
+            @click="searchAddress();"
+          >
+            search
+          </button>
+        </div>
+      </div>
+
+      <div
+        v-else-if="activeSearch.code==='email'"
+        class="search-area search-email"
+      >
+        <div class="columns">
+          <div class="column field">
+          <label class="label">email</label>
+            <div class="control">
+              <input
+                class="input is-normal"
+                v-model="searchParameters.email"
+                @keydown.enter="searchEmail"
+                placeholder="email"
+              />
+            </div>
+          </div>
+          <div class="column field" style="max-width:0;"></div>
+        </div>
+
+        <div class="control submit-search">
+          <button
+            class="button is-primary"
+            @click="searchEmail();"
+          >
+            search
+          </button>
+        </div>
+      </div>
+
+      <div
+        v-else-if="activeSearch.code==='telephoneNumber'"
+        class="search-area search-telephone"
+      >
+        <div class="columns">
+          <div class="column field">
+            <label class="label">telephone number</label>
+            <div class="control">
+              <input
+                class="input is-normal"
+                v-model="searchParameters.telephoneNumber"
+                @keydown.enter="searchTelephone"
+                placeholder="telephone number"
+              />
+            </div>
+          </div>
+          <div class="column field" style="max-width:0;"></div>
+        </div>
+
+        <div class="control submit-search">
+          <button
+            class="button is-primary"
+            @click="searchTelephone();"
+          >
+            search
+          </button>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="results-area">
+        <a
           class="card"
           v-if="$store.state.cc.customerResults"
           v-for="customer in $store.state.cc.customerResults"
           :key="customer.id"
+          @click="getCustomer(customer.id)"
         >
-          <button class="card-content" @click="getCustomer(customer.id)">
-            <div>id: {{ customer.id }}
-              <span>&nbsp;|&nbsp;last_name: {{ customer.last_name }}</span>
-              <span>&nbsp;|&nbsp;zip_code: {{ customer.zip_code }}</span>
-              <span>&nbsp;|&nbsp;house_number: {{ customer.house_number }}</span>
+          <div class="card-header">
+            <p class="card-header-title">
+              {{ customer.first_name }} {{ customer.last_name }}
+            </p>
+          </div>
+          <div class="card-content">
+            <div class="content columns">
+
+              <div class="column">
+                <div class="var-item">
+                  <span class="var-key">id: </span><span class="var-value">{{ customer.id }}</span>
+                </div>
+                <div class="var-item">
+                  <span class="var-key">first name: </span><span class="var-value">{{ customer.first_name }}</span>
+                </div>
+                <div class="var-item">
+                  <span class="var-key">last name: </span><span class="var-value">{{ customer.last_name }}</span>
+                </div>
+              </div>
+
+              <div class="column">
+                <div class="var-item">
+                  <span class="var-key">zip code: </span><span class="var-value">{{ customer.zip_code }}</span>
+                </div>
+                <div class="var-item">
+                  <span class="var-key">house_number: </span><span class="var-value">{{ customer.house_number }}</span>
+                </div>
+                <div class="var-item">
+                  <span class="var-key">email: </span><span class="var-value">{{ customer.email }}</span>
+                </div>
+                <div class="var-item">
+                  <span class="var-key">telephone: </span><span class="var-value">{{ customer.telephone }}</span>
+                </div>
+                <div class="var-item">
+                  <span class="var-key">date birth: </span><span class="var-value">{{ customer.date_birth }}</span>
+                </div>
+              </div>
+
             </div>
-            <div>email: {{ customer.email }}
-              <span>&nbsp;|&nbsp;telephone: {{ customer.telephone }}</span>
-              <span>&nbsp;|&nbsp;date_birth: {{ customer.date_birth }}</span>
-            </div>
-          </button>
-        </div>
+          </div>
+        </a>
       </div>
+
     </div>
   </div>
 </template>
@@ -159,4 +243,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/search_customers.css';
 </style>

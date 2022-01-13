@@ -7,6 +7,7 @@
     >
       <div class="message-body">{{ $store.state.cc.createError }}</div>
     </article>
+
     <div class="field">
       <label class="label">first name</label>
       <div class="control">
@@ -18,6 +19,7 @@
         />
       </div>
     </div>
+
     <div class="field">
       <label class="label">last name</label>
       <div class="control">
@@ -29,6 +31,7 @@
         />
       </div>
     </div>
+
     <div class="field">
       <label class="label">date birth</label>
       <div class="control">
@@ -40,9 +43,7 @@
       </div>
     </div>
 
-    <div
-      class="field"
-    >
+    <div class="field">
       <label class="label">gender</label>
       <div class="control">
         <div class="select">
@@ -57,6 +58,7 @@
         </div>
       </div>
     </div>
+
     <div class="field">
       <label class="label">zip code</label>
       <div class="control">
@@ -68,6 +70,7 @@
         />
       </div>
     </div>
+
     <div class="field">
       <label class="label">house number</label>
       <div class="control">
@@ -79,6 +82,7 @@
         />
       </div>
     </div>
+
     <div class="field">
       <label class="label">telephone</label>
       <div class="control">
@@ -90,6 +94,7 @@
         />
       </div>
     </div>
+
     <div class="field-email">
       <label class="label">Email</label>
       <div class="control">
@@ -101,6 +106,7 @@
         />
       </div>
     </div>
+
     <div class="field">
       <label class="label">notes</label>
       <div class="control">
@@ -112,6 +118,7 @@
         />
       </div>
     </div>
+
     <div class="control">
       <button
         class="button is-primary"

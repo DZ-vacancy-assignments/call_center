@@ -1,6 +1,5 @@
 <template>
 <div>
-  <div>I'm in the view customer component.</div>
   <div class="box customer-view">
     <div>id: {{ customer.id }}</div>
     <br/>
