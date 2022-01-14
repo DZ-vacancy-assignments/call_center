@@ -19,6 +19,12 @@
         <div class="var-item">
           <span class="var-key">gender</span><span class="var-value">: {{ customer.gender }}</span>
         </div>
+        <br><br>
+        <div class="var-item">
+          <span class="var-key"><u>notes:</u></span></div>
+        <div class="var-item">
+          <span class="var-value">{{ customer.notes }}</span>
+        </div>
       </div>
 
       <div class="column">
@@ -33,6 +39,13 @@
         </div>
         <div class="var-item">
           <span class="var-key">telephone</span><span class="var-value">: {{ customer.telephone }}</span>
+        </div>
+        <br>
+        <div class="var-item">
+          <span class="var-key">date created</span><span class="var-value">: {{ customer.date_create }}</span>
+        </div>
+        <div class="var-item">
+          <span class="var-key">date updated</span><span class="var-value">: {{ customer.date_update }}</span>
         </div>
       </div>
 

@@ -49,6 +49,7 @@
         <div class="control submit-search">
           <button
             class="button is-primary"
+            v-bind:class="{ 'is-loading': isSearching }"
             @click="searchAddress();"
           >
             search
@@ -78,6 +79,7 @@
         <div class="control submit-search">
           <button
             class="button is-primary"
+            v-bind:class="{ 'is-loading': isSearching }"
             @click="searchEmail();"
           >
             search
@@ -107,6 +109,7 @@
         <div class="control submit-search">
           <button
             class="button is-primary"
+            v-bind:class="{ 'is-loading': isSearching }"
             @click="searchTelephone();"
           >
             search
@@ -187,7 +190,8 @@ export default {
         houseNumber: '',
         email: '',
         telephoneNumber: '',
-      }
+      },
+      isSearching: false,
     }
   },
   methods: {
@@ -195,8 +199,9 @@ export default {
       this.activeSearch = searchOption
       return
     },
-    searchAddress: function() {
-      this.$store.dispatch(
+    searchAddress: async function() {
+      this.isSearching = true
+      await this.$store.dispatch(
         'cc/searchCustomers',
         {
           'search_option': this.activeSearch.code,
@@ -204,26 +209,31 @@ export default {
           'house_number': this.searchParameters.houseNumber
         }
       )
+      this.isSearching = false
       return
     },
-    searchEmail: function() {
-      this.$store.dispatch(
+    searchEmail: async function() {
+      this.isSearching = true
+      await this.$store.dispatch(
         'cc/searchCustomers',
         {
           'search_option': this.activeSearch.code,
           'email': this.searchParameters.email
         }
       )
+      this.isSearching = false
       return
     },
-    searchTelephone: function() {
-      this.$store.dispatch(
+    searchTelephone: async function() {
+      this.isSearching = true
+      await this.$store.dispatch(
         'cc/searchCustomers',
         {
           'search_option': this.activeSearch.code,
           'telephone': this.searchParameters.telephoneNumber
         }
       )
+      this.isSearching = false
       return
     },
     getCustomer: function(id) {
