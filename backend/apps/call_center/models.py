@@ -35,4 +35,5 @@ class Customer(TimeStamps):
     telephone = PhoneNumberField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
 
-    notes = models.CharField(max_length=1000, null=True, blank=True)
+    # max_length is set higher for debug purposes.
+    notes = models.CharField(max_length=10000000, null=True, blank=True)
