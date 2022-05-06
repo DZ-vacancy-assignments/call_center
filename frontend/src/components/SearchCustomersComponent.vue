@@ -192,6 +192,8 @@ export default {
         telephoneNumber: '',
       },
       isSearching: false,
+      searchingStartTime: 0,
+      minimumSearchTime: 300
     }
   },
   methods: {
@@ -200,7 +202,7 @@ export default {
       return
     },
     searchAddress: async function() {
-      this.isSearching = true
+      this.setIsSearchingTrue()
       await this.$store.dispatch(
         'cc/searchCustomers',
         {
@@ -209,11 +211,11 @@ export default {
           'house_number': this.searchParameters.houseNumber
         }
       )
-      this.isSearching = false
+      this.setIsSearchingFalse()
       return
     },
     searchEmail: async function() {
-      this.isSearching = true
+      this.setIsSearchingTrue()
       await this.$store.dispatch(
         'cc/searchCustomers',
         {
@@ -221,11 +223,11 @@ export default {
           'email': this.searchParameters.email
         }
       )
-      this.isSearching = false
+      this.setIsSearchingFalse()
       return
     },
     searchTelephone: async function() {
-      this.isSearching = true
+      this.setIsSearchingTrue()
       await this.$store.dispatch(
         'cc/searchCustomers',
         {
@@ -233,7 +235,7 @@ export default {
           'telephone': this.searchParameters.telephoneNumber
         }
       )
-      this.isSearching = false
+      this.setIsSearchingFalse()
       return
     },
     getCustomer: function(id) {
@@ -241,6 +243,22 @@ export default {
       .then(() => {
         this.$router.push('/view_customer/')
       })
+    },
+    setIsSearchingTrue: function() {
+      this.isSearching = true
+      this.searchingStartTime = Date.now()
+    },
+    setIsSearchingFalse: function() {
+      let searchingEndTime = Date.now()
+      let diff = searchingEndTime - this.searchingStartTime
+      this.searchingStartTime = 0
+      if (diff < this.minimumSearchTime) {
+        setTimeout(() => {
+          this.isSearching = false
+        }, this.minimumSearchTime - diff)
+      } else {
+        this.isSearching = false
+      }
     }
   },
   created: function() {

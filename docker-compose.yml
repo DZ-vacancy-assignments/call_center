@@ -33,14 +33,12 @@ services:
       - call_center_data:/var/lib/postgresql/data
     env_file: .env
 
-
   mailhog:
     image: mailhog/mailhog
     ports:
       - "8025:8025"
     logging:
       driver: none
-
 
   nginx:
     image: nginx:alpine
