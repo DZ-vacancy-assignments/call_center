@@ -20,6 +20,9 @@
         <router-link class="navbar-router-link" event="" to="/create_product">
           <div class="navbar-item disabled">Create Product</div>
         </router-link>
+        <router-link class="navbar-router-link" to="/view_some_video">
+          <div class="navbar-item">View Some Video</div>
+        </router-link>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">

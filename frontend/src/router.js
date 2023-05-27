@@ -5,12 +5,14 @@ import LoginComponent from '@/components/LoginComponent.vue'
 import SearchCustomersComponent from '@/components/SearchCustomersComponent.vue'
 import CreateCustomerComponent from '@/components/CreateCustomerComponent.vue'
 import ViewCustomerComponent from '@/components/ViewCustomerComponent.vue'
+import ViewSomeVideoComponent from '@/components/ViewSomeVideoComponent.vue'
 
 const routes = [
   { path: '/', component: LoginComponent },
   { path: '/search_customers', component: SearchCustomersComponent },
   { path: '/create_customer', component: CreateCustomerComponent },
-  { path: '/view_customer', component: ViewCustomerComponent }
+  { path: '/view_customer', component: ViewCustomerComponent },
+  { path: '/view_some_video', component: ViewSomeVideoComponent }
 ]
 
 Vue.use(VueRouter)
