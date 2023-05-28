@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import auth from '@/store/modules/auth'
-import kpn_callcenter from '@/store/services/kpn_callcenter'
+import call_center from '@/store/services/call_center'
 import users from '@/store/services/users'
 
 Vue.use(Vuex)
@@ -10,7 +10,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
     auth,
-    kcc: kpn_callcenter,
+    cc: call_center,
     users
   }
 })

@@ -1,7 +1,7 @@
 version: '3.3'
 
 volumes:
-    kpn_callcenter_data: {}
+    call_center_data: {}
 
 services:
   backend:
@@ -30,9 +30,8 @@ services:
   postgres:
     image: postgres:10-alpine
     volumes:
-      - kpn_callcenter_data:/var/lib/postgresql/data
+      - call_center_data:/var/lib/postgresql/data
     env_file: .env
-
 
   mailhog:
     image: mailhog/mailhog
@@ -40,7 +39,6 @@ services:
       - "8025:8025"
     logging:
       driver: none
-
 
   nginx:
     image: nginx:alpine

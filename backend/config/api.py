@@ -1,7 +1,7 @@
 from rest_framework import routers
 
 from apps.users.views import UserViewSet
-from kpn_callcenter.views import CustomerViewSet
+from apps.call_center.views import CustomerViewSet
 
 
 # Settings

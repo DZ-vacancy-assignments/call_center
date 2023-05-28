@@ -1,0 +1,58 @@
+.c-v-select {
+  width: 10em;
+}
+
+.search-address {
+  width: 30em;
+}
+
+.search-email {
+  width: 30em;
+}
+
+.search-telephone {
+  width: 30em;
+}
+
+.submit-search > button {
+  margin-top: -0.5em;
+}
+
+.results-area {
+}
+
+a .card {
+  border-top-color: green;
+}
+
+a > .card-header {
+  height: 2em;
+  border-top: .25em solid green;
+  background: #f0f0f0;
+}
+
+a:hover > .card-header {
+  background: #e8e8e8;
+}
+
+a:active > .card-header {
+  background: #cccccc;
+}
+
+a > .card-content {
+  background: #dddddd;
+  margin-bottom: 0.5em;
+}
+
+a:hover > .card-content {
+  background: #c8c8c8;
+}
+
+a:active > .card-content {
+  background: #bbbbbb;
+}
+
+.var-key {
+  display: inline-block;
+  width: 10em;
+}

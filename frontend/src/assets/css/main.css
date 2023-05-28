@@ -8,6 +8,24 @@
   color: green;
 }
 
-.navbar-start > .navbar-item:hover {
+.navbar-router-link > .navbar-item {
+  height: 100%;
+}
+
+.navbar-router-link > .navbar-item:hover {
+  background-color: #dddddd !important;
+}
+
+.navbar-router-link > .navbar-item.disabled {
   background-color: #bcbcbc;
+}
+
+.navbar-router-link > .navbar-item:hover.disabled {
+  cursor: not-allowed;
+  background-color: #bcbcbc;
+}
+
+.navbar-router-link.is-active {
+  font-weight: 700;
+  background-color: #efefef;
 }

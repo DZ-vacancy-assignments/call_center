@@ -3,15 +3,26 @@
   <nav v-if="$store.state.auth.loggedIn" class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <span class="navbar-item">
-        <h1 class="nav-title"><span class="brand-name">KPN</span> CALL CENTER</h1>
+        <h1 class="nav-title"><span class="brand-name">MCK</span> CALL CENTER</h1>
       </span>
     </div>
     <div class="navbar-menu">
       <div class="navbar-start">
-        <router-link class="navbar-item" to="/search_customers">Search Customers</router-link>
-        <router-link class="navbar-item" to="/create_customer">Create Customer</router-link>
-        <router-link class="navbar-item" to="/list_products" event="" style="background: lightgrey">List Products</router-link>
-        <router-link class="navbar-item" to="/create_product" event="" style="background: lightgrey">Create Product</router-link>
+        <router-link class="navbar-router-link" to="/search_customers">
+          <div class="navbar-item">Search Customers</div>
+        </router-link>
+        <router-link class="navbar-router-link" to="/create_customer">
+          <div class="navbar-item">Create Customer</div>
+        </router-link>
+        <router-link class="navbar-router-link" event="" to="/list_products">
+          <div class="navbar-item disabled">List Products</div>
+        </router-link>
+        <router-link class="navbar-router-link" event="" to="/create_product">
+          <div class="navbar-item disabled">Create Product</div>
+        </router-link>
+        <router-link class="navbar-router-link" to="/view_some_video">
+          <div class="navbar-item">View Some Video</div>
+        </router-link>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
