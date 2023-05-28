@@ -2,10 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import LoginComponent from '@/components/LoginComponent.vue'
-import SearchCustomersComponent from '@/components/SearchCustomersComponent.vue'
-import CreateCustomerComponent from '@/components/CreateCustomerComponent.vue'
-import ViewCustomerComponent from '@/components/ViewCustomerComponent.vue'
-import ViewSomeVideoComponent from '@/components/ViewSomeVideoComponent.vue'
+import SearchCustomersComponent from '@/components/SearchCustomers.vue'
+import CreateCustomerComponent from '@/components/CreateCustomer.vue'
+import ViewCustomerComponent from '@/components/ViewCustomer.vue'
+import ViewSomeVideoComponent from '@/components/ViewSomeVideo.vue'
 
 const routes = [
   { path: '/', component: LoginComponent },
