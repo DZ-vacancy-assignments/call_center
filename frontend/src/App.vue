@@ -10,8 +10,8 @@
       <div class="navbar-start">
         <router-link class="navbar-item" to="/search_customers">Search Customers</router-link>
         <router-link class="navbar-item" to="/create_customer">Create Customer</router-link>
-        <router-link class="navbar-item" to="/list_products">List Products</router-link>
-        <router-link class="navbar-item" to="/create_product">Create Product</router-link>
+        <router-link class="navbar-item" to="/list_products" event="" style="background: lightgrey">List Products</router-link>
+        <router-link class="navbar-item" to="/create_product" event="" style="background: lightgrey">Create Product</router-link>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
