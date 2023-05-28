@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: 'LoginComponent',
+  name: 'Login',
   data() {
     return {
       email: 'firstcreateduser@user.co',

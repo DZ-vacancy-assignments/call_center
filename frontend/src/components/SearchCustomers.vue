@@ -178,7 +178,7 @@
 import VueSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 export default {
-  name: 'SearchCustomersComponent',
+  name: 'SearchCustomers',
   components: {
     'v-select': VueSelect
   },

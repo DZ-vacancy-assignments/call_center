@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  name: 'ViewCustomerComponent',
+  name: 'ViewCustomer',
   components: {},
   data() {
     return {

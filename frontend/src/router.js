@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import LoginComponent from '@/components/LoginComponent.vue'
+import LoginComponent from '@/components/Login.vue'
 import SearchCustomersComponent from '@/components/SearchCustomers.vue'
 import CreateCustomerComponent from '@/components/CreateCustomer.vue'
 import ViewCustomerComponent from '@/components/ViewCustomer.vue'

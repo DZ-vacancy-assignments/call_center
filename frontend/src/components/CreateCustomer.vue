@@ -133,7 +133,7 @@
 
 <script>
 export default {
-  name: 'CreateCustomerComponent',
+  name: 'CreateCustomer',
   components: {},
   data() {
     return {
